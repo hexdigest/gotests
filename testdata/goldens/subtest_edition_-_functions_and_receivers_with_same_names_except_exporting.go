@@ -1,6 +1,11 @@
 package testdata
 
-import "testing"
+import (
+	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
+)
 
 func TestSameName(t *testing.T) {
 	tests := []struct {
@@ -12,6 +17,8 @@ func TestSameName(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			mc := minimock.NewController(t)
+			defer mc.Wait(time.Second)
 			got, err := SameName()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("SameName() error = %v, wantErr %v", err, tt.wantErr)
@@ -34,6 +41,8 @@ func Test_sameName(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			mc := minimock.NewController(t)
+			defer mc.Wait(time.Second)
 			got, err := sameName()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("sameName() error = %v, wantErr %v", err, tt.wantErr)
@@ -49,7 +58,7 @@ func Test_sameName(t *testing.T) {
 func TestSameTypeName_SameName(t *testing.T) {
 	tests := []struct {
 		name    string
-		t       *SameTypeName
+		setup   func(mc *minimock.Controller) *SameTypeName
 		want    int
 		wantErr bool
 	}{
@@ -57,7 +66,9 @@ func TestSameTypeName_SameName(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			t := &SameTypeName{}
+			mc := minimock.NewController(t)
+			defer mc.Wait(time.Second)
+			t := tt.setup(mc)
 			got, err := t.SameName()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("SameTypeName.SameName() error = %v, wantErr %v", err, tt.wantErr)
@@ -73,7 +84,7 @@ func TestSameTypeName_SameName(t *testing.T) {
 func TestSameTypeName_sameName(t *testing.T) {
 	tests := []struct {
 		name    string
-		t       *SameTypeName
+		setup   func(mc *minimock.Controller) *SameTypeName
 		want    int
 		wantErr bool
 	}{
@@ -81,7 +92,9 @@ func TestSameTypeName_sameName(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			t := &SameTypeName{}
+			mc := minimock.NewController(t)
+			defer mc.Wait(time.Second)
+			t := tt.setup(mc)
 			got, err := t.sameName()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("SameTypeName.sameName() error = %v, wantErr %v", err, tt.wantErr)
@@ -97,7 +110,7 @@ func TestSameTypeName_sameName(t *testing.T) {
 func Test_sameTypeName_SameName(t *testing.T) {
 	tests := []struct {
 		name    string
-		t       *sameTypeName
+		setup   func(mc *minimock.Controller) *sameTypeName
 		want    int
 		wantErr bool
 	}{
@@ -105,7 +118,9 @@ func Test_sameTypeName_SameName(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			t := &sameTypeName{}
+			mc := minimock.NewController(t)
+			defer mc.Wait(time.Second)
+			t := tt.setup(mc)
 			got, err := t.SameName()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("sameTypeName.SameName() error = %v, wantErr %v", err, tt.wantErr)
@@ -121,7 +136,7 @@ func Test_sameTypeName_SameName(t *testing.T) {
 func Test_sameTypeName_sameName(t *testing.T) {
 	tests := []struct {
 		name    string
-		t       *sameTypeName
+		setup   func(mc *minimock.Controller) *sameTypeName
 		want    int
 		wantErr bool
 	}{
@@ -129,7 +144,9 @@ func Test_sameTypeName_sameName(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			t := &sameTypeName{}
+			mc := minimock.NewController(t)
+			defer mc.Wait(time.Second)
+			t := tt.setup(mc)
 			got, err := t.sameName()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("sameTypeName.sameName() error = %v, wantErr %v", err, tt.wantErr)

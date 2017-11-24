@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
 )
 
 func TestBarBar100(t *testing.T) {
@@ -67,6 +70,8 @@ func Test_wrapToString(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			mc := minimock.NewController(t)
+			defer mc.Wait(time.Second)
 			if got := wrapToString(tt.args.in); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("wrapToString() = %v, want %v", got, tt.want)
 			}

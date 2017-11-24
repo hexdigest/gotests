@@ -3,6 +3,9 @@ package testdata
 import (
 	"reflect"
 	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
 )
 
 func TestFoo25(t *testing.T) {
@@ -19,6 +22,8 @@ func TestFoo25(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
 		got, got1, err := Foo25(tt.args.in0)
 		if (err != nil) != tt.wantErr {
 			t.Errorf("%q. Foo25() error = %v, wantErr %v", tt.name, err, tt.wantErr)

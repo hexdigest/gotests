@@ -3,6 +3,9 @@ package syntaxtest
 import (
 	"os"
 	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
 )
 
 // Plural all the types.
@@ -23,6 +26,8 @@ func TestNot(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
 		if got := Not(tt.args.this); got != tt.want {
 			t.Errorf("%q. Not() = %v, want %v", tt.name, got, tt.want)
 		}

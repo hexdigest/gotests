@@ -3,6 +3,9 @@ package testdata
 import (
 	"reflect"
 	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
 )
 
 func TestFooFilter(t *testing.T) {
@@ -18,6 +21,8 @@ func TestFooFilter(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
 		got, err := FooFilter(tt.args.strs)
 		if (err != nil) != tt.wantErr {
 			t.Errorf("%q. FooFilter() error = %v, wantErr %v", tt.name, err, tt.wantErr)
@@ -35,14 +40,16 @@ func TestBar_BarFilter(t *testing.T) {
 	}
 	tests := []struct {
 		name    string
-		b       *Bar
+		setup   func(mc *minimock.Controller) *Bar
 		args    args
 		wantErr bool
 	}{
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		b := &Bar{}
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
+		b := tt.setup(mc)
 		if err := b.BarFilter(tt.args.i); (err != nil) != tt.wantErr {
 			t.Errorf("%q. Bar.BarFilter() error = %v, wantErr %v", tt.name, err, tt.wantErr)
 		}
@@ -61,6 +68,8 @@ func Test_bazFilter(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
 		if got := bazFilter(tt.args.f); got != tt.want {
 			t.Errorf("%q. bazFilter() = %v, want %v", tt.name, got, tt.want)
 		}

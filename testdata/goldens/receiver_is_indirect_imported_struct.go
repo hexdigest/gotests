@@ -1,16 +1,23 @@
 package testdata
 
-import "testing"
+import (
+	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
+)
 
 func Test_someIndirectImportedStruct_Foo037(t *testing.T) {
 	tests := []struct {
-		name string
-		smtg *someIndirectImportedStruct
+		name  string
+		setup func(mc *minimock.Controller) *someIndirectImportedStruct
 	}{
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		smtg := &someIndirectImportedStruct{}
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
+		smtg := tt.setup(mc)
 		smtg.Foo037()
 	}
 }

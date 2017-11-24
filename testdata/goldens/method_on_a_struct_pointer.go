@@ -1,6 +1,11 @@
 package testdata
 
-import "testing"
+import (
+	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
+)
 
 func TestBar_Foo7(t *testing.T) {
 	type args struct {
@@ -8,7 +13,7 @@ func TestBar_Foo7(t *testing.T) {
 	}
 	tests := []struct {
 		name    string
-		b       *Bar
+		setup   func(mc *minimock.Controller) *Bar
 		args    args
 		want    string
 		wantErr bool
@@ -16,7 +21,9 @@ func TestBar_Foo7(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		b := &Bar{}
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
+		b := tt.setup(mc)
 		got, err := b.Foo7(tt.args.i)
 		if (err != nil) != tt.wantErr {
 			t.Errorf("%q. Bar.Foo7() error = %v, wantErr %v", tt.name, err, tt.wantErr)

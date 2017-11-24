@@ -4,6 +4,9 @@ import (
 	"go/ast"
 	"go/types"
 	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
 )
 
 func TestFoo200(t *testing.T) {
@@ -34,6 +37,8 @@ func TestBar200(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
 		if got := Bar200(tt.args.t); got != tt.want {
 			t.Errorf("%q. Bar200() = %v, want %v", tt.name, got, tt.want)
 		}

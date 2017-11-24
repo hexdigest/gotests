@@ -1,6 +1,11 @@
 package testdata
 
-import "testing"
+import (
+	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
+)
 
 func TestFoo19(t *testing.T) {
 	type args struct {
@@ -16,6 +21,8 @@ func TestFoo19(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
 		if got := Foo19(tt.args.in1, tt.args.in2, tt.args.in3); got != tt.want {
 			t.Errorf("%q. Foo19() = %v, want %v", tt.name, got, tt.want)
 		}

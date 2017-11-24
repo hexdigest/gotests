@@ -3,6 +3,9 @@ package undefinedtypes
 import (
 	"reflect"
 	"testing"
+	"time"
+
+	"github.com/gojuno/minimock"
 )
 
 func TestUndefined_Do(t *testing.T) {
@@ -19,6 +22,8 @@ func TestUndefined_Do(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
+		mc := minimock.NewController(t)
+		defer mc.Wait(time.Second)
 		got, err := tt.u.Do(tt.args.es)
 		if (err != nil) != tt.wantErr {
 			t.Errorf("%q. Undefined.Do() error = %v, wantErr %v", tt.name, err, tt.wantErr)
