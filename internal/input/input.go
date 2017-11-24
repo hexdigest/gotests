@@ -5,8 +5,6 @@ import (
 	"path"
 	"path/filepath"
 
-	// following imports were changed by Max Chechel (github.com/hexdigest)
-	// due to modifications in internal/render/templates/function.tmpl
 	"github.com/hexdigest/gotests/internal/models"
 )
 

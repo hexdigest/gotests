@@ -10,8 +10,6 @@ import (
 	"sort"
 	"sync"
 
-	// following imports were changed by Max Chechel (github.com/hexdigest)
-	// due to modifications in internal/render/templates/function.tmpl
 	"github.com/hexdigest/gotests/internal/goparser"
 	"github.com/hexdigest/gotests/internal/input"
 	"github.com/hexdigest/gotests/internal/models"
