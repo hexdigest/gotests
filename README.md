@@ -1,7 +1,7 @@
 # gotests [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/hexdigest/gotests/blob/master/LICENSE) [![godoc](https://img.shields.io/badge/go-documentation-blue.svg)](https://godoc.org/github.com/hexdigest/gotests) [![Build Status](https://travis-ci.org/hexdigest/gotests.svg?branch=master)](https://travis-ci.org/hexdigest/gotests) [![Coverage Status](https://coveralls.io/repos/github/hexdigest/gotests/badge.svg?branch=master)](https://coveralls.io/github/hexdigest/gotests?branch=master) [![Go Report Card](https://goreportcard.com/badge/github.com/hexdigest/gotests)](https://goreportcard.com/report/github.com/hexdigest/gotests)
 
 This repository is a fork of [cweill/gotests](https://github.com/cweill/gotests)
-The difference from the original code is that generated code is integrated with [minimock](https://github.com/cweill/gotests) and has setup function when test is generated for the struct's method
+The difference from the original code is that generated test is integrated with [minimock](https://github.com/cweill/gotests) and has setup function when testing a method of a struct.
 
 `gotests` makes writing Go tests easy. It's a Golang commandline tool that generates [table driven tests](https://github.com/golang/go/wiki/TableDrivenTests) based on its target source files' function and method signatures. Any new dependencies in the test files are automatically imported.
 
