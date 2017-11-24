@@ -5,7 +5,9 @@ import (
 	"path"
 	"path/filepath"
 
-	"github.com/cweill/gotests/internal/models"
+	// following imports were changed by Max Chechel (github.com/hexdigest)
+	// due to modifications in internal/render/templates/function.tmpl
+	"github.com/hexdigest/gotests/internal/models"
 )
 
 // Returns all the Golang files for the given path. Ignores hidden files.

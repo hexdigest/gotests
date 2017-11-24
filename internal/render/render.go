@@ -7,8 +7,10 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/cweill/gotests/internal/models"
-	"github.com/cweill/gotests/internal/render/bindata"
+	// following imports were changed by Max Chechel (github.com/hexdigest)
+	// due to modifications in internal/render/templates/function.tmpl
+	"github.com/hexdigest/gotests/internal/models"
+	"github.com/hexdigest/gotests/internal/render/bindata"
 )
 
 const name = "name"

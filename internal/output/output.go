@@ -10,8 +10,10 @@ import (
 
 	"golang.org/x/tools/imports"
 
-	"github.com/cweill/gotests/internal/models"
-	"github.com/cweill/gotests/internal/render"
+	// following imports were changed by Max Chechel (github.com/hexdigest)
+	// due to modifications in internal/render/templates/function.tmpl
+	"github.com/hexdigest/gotests/internal/models"
+	"github.com/hexdigest/gotests/internal/render"
 )
 
 type Options struct {
