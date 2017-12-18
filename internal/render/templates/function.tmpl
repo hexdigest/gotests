@@ -32,10 +32,10 @@ func {{.TestName}}(t *testing.T) {
 	}
 	for {{if not .IsNaked}} _, tt := {{end}} range tests {
         {{- if .Subtests }}t.Run(tt.name, func(t *testing.T) { {{- end -}}
-          mc := minimock.NewController(t)
-          defer mc.Wait(time.Second)
 			{{- with .Receiver}}
 				{{- if .IsStruct}}
+          mc := minimock.NewController(t)
+          defer mc.Wait(time.Second)
 					{{Receiver .}} := tt.setup(mc)
 				{{- end}}
 			{{- end}}

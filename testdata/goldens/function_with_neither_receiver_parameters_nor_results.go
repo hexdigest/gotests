@@ -1,11 +1,6 @@
 package testdata
 
-import (
-	"testing"
-	"time"
-
-	"github.com/gojuno/minimock"
-)
+import "testing"
 
 func TestFoo1(t *testing.T) {
 	tests := []struct {
@@ -14,8 +9,6 @@ func TestFoo1(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for range tests {
-		mc := minimock.NewController(t)
-		defer mc.Wait(time.Second)
 		Foo1()
 	}
 }

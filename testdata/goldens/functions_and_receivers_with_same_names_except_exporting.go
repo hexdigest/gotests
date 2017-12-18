@@ -16,8 +16,6 @@ func TestSameName(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		mc := minimock.NewController(t)
-		defer mc.Wait(time.Second)
 		got, err := SameName()
 		if (err != nil) != tt.wantErr {
 			t.Errorf("%q. SameName() error = %v, wantErr %v", tt.name, err, tt.wantErr)
@@ -38,8 +36,6 @@ func Test_sameName(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		mc := minimock.NewController(t)
-		defer mc.Wait(time.Second)
 		got, err := sameName()
 		if (err != nil) != tt.wantErr {
 			t.Errorf("%q. sameName() error = %v, wantErr %v", tt.name, err, tt.wantErr)

@@ -10,12 +10,7 @@
 
 package testdata
 
-import (
-	"testing"
-	"time"
-
-	"github.com/gojuno/minimock"
-)
+import "testing"
 
 func TestBeforeComment(t *testing.T) {
 	tests := []struct {
@@ -25,8 +20,6 @@ func TestBeforeComment(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		mc := minimock.NewController(t)
-		defer mc.Wait(time.Second)
 		if got := BeforeComment(); got != tt.want {
 			t.Errorf("%q. BeforeComment() = %v, want %v", tt.name, got, tt.want)
 		}

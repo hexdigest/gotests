@@ -45,8 +45,6 @@ func TestWrite(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		mc := minimock.NewController(t)
-		defer mc.Wait(time.Second)
 		w := &bytes.Buffer{}
 		if err := Write(w, tt.args.data); (err != nil) != tt.wantErr {
 			t.Errorf("%q. Write() error = %v, wantErr %v", tt.name, err, tt.wantErr)
@@ -74,8 +72,6 @@ func TestMultiWrite(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		mc := minimock.NewController(t)
-		defer mc.Wait(time.Second)
 		w1 := &bytes.Buffer{}
 		w2 := &bytes.Buffer{}
 		got, got1, err := MultiWrite(w1, w2, tt.args.data)

@@ -20,8 +20,6 @@ func Test_name_Name(t *testing.T) {
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		mc := minimock.NewController(t)
-		defer mc.Wait(time.Second)
 		if got := tt.n.Name(tt.args.n); got != tt.want {
 			t.Errorf("%q. name.Name() = %v, want %v", tt.name, got, tt.want)
 		}
